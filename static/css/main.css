@@ -1,0 +1,20 @@
+.grid{
+	display:flex;
+    flex-wrap: wrap;
+	flex-direction: row;
+	width:100%;
+}
+
+.grid-item{
+    width: 200px;
+    height:121px;
+    
+    margin:1rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        padding:0.8rem;
+
+}
+
+.data{
+
+}
