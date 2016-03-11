@@ -3,12 +3,15 @@
     <head>
         <title>Discount Ascii Warehouse</title>
         <link rel="stylesheet" type="text/css" href="./css/main.css">
-        <script src="../bower_components/angular/angular.min.js"></script>
-        <script src="./js/filters.js"></script>
-        <script src="./js/app.js"></script>
+        <script src="/bower_components/angular/angular.min.js"></script>
+        <script src="/bower_components/jquery-1.12.0.min/index.js"></script>
+        <script src="/js/directives/productGrid.js"></script>
+        <script src="/js/filters/filterDate.js"></script>
+        <script src="/js/app.js"></script>
+        <script src="/js/services/faces.js"></script>
 
     </head>
-    <body>
+    <body  ng-controller="WarehouseController">
         <header>
             <h1>Discount Ascii Warehouse</h1>
 
@@ -23,21 +26,12 @@
         
 		<div>
 			<label> Click any button to change order -> </label>
-			<button> id </button>
-			<button> price </button>
-			<button> size </button>
+			<button id="id-order"> id </button>
+			<button id="id-price"> price </button>
+			<button id="id-size"> size </button>
 		</div>
         <section class="products" >
-			<div class="grid"  ng-controller="GridController">
-            	<div class="grid-item" ng-repeat="item in faces | orderBy: orderPreference">
-	            	<div class="face"  ng-style="{'font-size':item.size+'px' }">{{item.face}} </div>
-	            	<div class="data">
-		            	<div> {{ item.price | currency}}</div>
-		            	<div> {{item.date | dateFilter}}</div>
-		            	
-	            	</div>
-            	</div>
-            </div>
+			<product-grid order="order"> </product-grid>
         </section>
     </body>
 </html>

@@ -1,0 +1,23 @@
+{
+  "name": "Ekaitz",
+  "description": "For all your ascii needs.",
+  "main": "index.js",
+  "authors": [
+    "Ekaitz <ekaitz.hernandez@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.0",
+    "query": "~0.0.2"
+  }
+}
