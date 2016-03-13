@@ -5,7 +5,7 @@ angular.module('AsciiWarehouse')
 		nextBatch: null,
 		pointer:0,
 		getBatch: function(){
-			var limit = 15;
+			var limit = 2000;
 			var http = $http({
 					  url: '/api/products?limit='+limit+'&skip='+this.pointer,
 					  method: 'GET',

@@ -10,19 +10,33 @@ angular.module('productGrid',[])
 		templateUrl:'/js/directives/product-grid.html',
 		link: function (scope, element) {
            
-			$(window).on("scroll",function() {
+           
+           	var scrollFunction = function() {
 				if(($(window).scrollTop() + $(window).height() > $(document).height() - 100)) {
+							$(this).off('scroll',scrollFunction);
+							scope.loading = true;
+							if(scope.dataCached === null){
+								Faces.getBatch().success(function(data){
+									scope.loading = false;
+									$.merge(scope.faces,data);
+									$(this).on('scroll',scrollFunction);
+								}).catch(function(err){
+									
+									
+								});
+								
+							} else {
+								scope.loading = false;
 								$.merge(scope.faces,scope.dataCached);
-							
-							scope.$apply();
-							scope.$apply(function () {
-						      	scope.dataCached = null;
-						    });
-							
-					
-			
+							    scope.dataCached = null;
+							    $(this).on('scroll',scrollFunction);
+
+							}
+
 			   }
-			});
+			}
+			
+			$(window).on("scroll",scrollFunction);
 			
         },
 		
