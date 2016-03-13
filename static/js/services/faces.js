@@ -5,9 +5,9 @@ angular.module('AsciiWarehouse')
 		nextBatch: null,
 		pointer:0,
 		getBatch: function(){
-			
+			var limit = 15;
 			var http = $http({
-					  url: '/api/products?limit=30&skip='+this.pointer,
+					  url: '/api/products?limit='+limit+'&skip='+this.pointer,
 					  method: 'GET',
 					  transformResponse: [function (data) {
 						  	var lines = data.split('\n');
@@ -29,7 +29,7 @@ angular.module('AsciiWarehouse')
 					  }]
 					});
 					
-			this.pointer = this.pointer + 30;
+			this.pointer = this.pointer + 15;
 			return http;					
 		
 		}

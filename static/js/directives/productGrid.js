@@ -11,19 +11,15 @@ angular.module('productGrid',[])
 		link: function (scope, element) {
            
 			$(window).on("scroll",function() {
-				if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-					if(Faces.nextBatch === null){
-						scope.loading = true;
-						Faces.getBatch().success(function(data){
-							scope.loading = false;
-							scope.orderPreference = scope.order;
-							$.merge(scope.faces,data);
-						}).catch(function(err){
+				if(($(window).scrollTop() + $(window).height() > $(document).height() - 100)) {
+								$.merge(scope.faces,scope.dataCached);
 							
-						});
-					} else {
-						scope.faces = nextBatch;
-					}
+							scope.$apply();
+							scope.$apply(function () {
+						      	scope.dataCached = null;
+						    });
+							
+					
 			
 			   }
 			});
@@ -31,12 +27,29 @@ angular.module('productGrid',[])
         },
 		
 		controller:['$scope',function($scope){
+			
 				Faces.getBatch().success(function(data){
 					$scope.orderPreference = $scope.order;
-					$scope.faces = data;	
+					$scope.faces = data;
 				}).catch(function(err){
 					
+					
 				});
+			
+				$scope.dataCached = null;
+
+			    $scope.$watch('dataCached', function() {
+					if($scope.dataCached === null) {
+						Faces.getBatch().success(function(data){
+							$scope.dataCached = data;
+						}).catch(function(err){
+							
+							
+						});
+					}
+			    });
+			    
+				
 			
 		}]
 	};
