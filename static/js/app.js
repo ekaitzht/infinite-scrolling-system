@@ -4,6 +4,11 @@
 	app.controller('WarehouseController',['$scope',function($scope){
 		$scope.order = 'price';
 		
+		
+		$scope.changeOrder = function(){
+			$scope.order = event.toElement.innerText;
+		}
+		
 	}]);
 		
 })();

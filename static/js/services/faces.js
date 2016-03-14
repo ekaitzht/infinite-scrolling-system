@@ -1,11 +1,11 @@
 angular.module('AsciiWarehouse')
 .factory('Faces',['$http', function($http){
 	return {
-		
+		firstElement:null,
 		nextBatch: null,
 		pointer:0,
 		getBatch: function(){
-			var limit = 2000;
+			var limit = 30;
 			var http = $http({
 					  url: '/api/products?limit='+limit+'&skip='+this.pointer,
 					  method: 'GET',
@@ -25,11 +25,14 @@ angular.module('AsciiWarehouse')
 								}
 
 							});
-					      return JSON.parse(dataParsed);
+							
+							
+							
+							return  JSON.parse(dataParsed);
 					  }]
 					});
 					
-			this.pointer = this.pointer + 15;
+			this.pointer = this.pointer + 30;
 			return http;					
 		
 		}

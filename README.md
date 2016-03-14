@@ -8,7 +8,7 @@ Requirements
 
 Your task is to implement the following features:
 
-- display the products in a grid.
+- display the products in a grid. 
 - give the user an option to sort the products in ascending order. Can sort by "size", "price" or "id".
 - each product has :
   - a "size" field, which is the font-size in pixels. We should display the faces in their correct size, to give customers a realistic impression of what they're buying.

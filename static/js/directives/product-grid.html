@@ -1,12 +1,24 @@
 <div class="grid">
-	<div class="grid-item" ng-repeat="item in faces | orderBy: orderPreference">
-    	<div class="face"  ng-style="{'font-size':item.size+'px' }">{{item.face}} </div>
-    	<div class="data">
-        	<div> {{ item.price | currency}}</div>
-        	<div> {{item.date | dateFilter}}</div>
-    	</div>
+	<div class="grid-item" ng-repeat="item in faces | orderBy: order">
+		<div ng-if="$index % 20 !== 0">
+	    	<div class="face"  ng-style="{'font-size':item.size+'px' }">{{item.face}} </div>
+	    	<div class="data">
+	        	<div> {{ item.price | currency}}</div>
+	        	<div> {{item.date | dateFilter}}</div>
+	    	</div>
+		</div>
+		<div ng-if="$index % 20 === 0">
+		
+			 
+			 <img class="ad" ng-src="/ad/?r=::getRandom()"/>
+            
+		</div>
 	</div>
 	<div class="loading" ng-show="loading">
 		Loading
 	</div>
+	<div ng-show="endCatalog">
+		~ end of catalogue ~
+	</div>
 </div>
+

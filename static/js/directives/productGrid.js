@@ -10,7 +10,6 @@ angular.module('productGrid',[])
 		templateUrl:'/js/directives/product-grid.html',
 		link: function (scope, element) {
            
-           
            	var scrollFunction = function() {
 				if(($(window).scrollTop() + $(window).height() > $(document).height() - 100)) {
 							$(this).off('scroll',scrollFunction);
@@ -41,9 +40,15 @@ angular.module('productGrid',[])
         },
 		
 		controller:['$scope',function($scope){
-			
+				$scope.Math = window.Math;
+				
+				
+				$scope.getRandom = function(){
+				  var random = Math.floor(Math.random()*1000);
+				  return random;
+				}
+				
 				Faces.getBatch().success(function(data){
-					$scope.orderPreference = $scope.order;
 					$scope.faces = data;
 				}).catch(function(err){
 					
@@ -62,6 +67,8 @@ angular.module('productGrid',[])
 						});
 					}
 			    });
+			    
+			  
 			    
 				
 			
